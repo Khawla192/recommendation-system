@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <title>Edit <%= laptop.name %>
+    </title>
+</head>
+
+<body>
+    <%- include('../partials/_navbar.ejs') %>
+        <div class="container">
+            <h1>Add New Laptop</h1>
+            <form action="/users/<%= user._id %>/laptops" method="POST">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required><br>
+
+                <label for="brand">Brand:</label>
+                <select id="brand" name="brand" required>
+                    <option value="Asus" <%=laptop.brand==="Asus" ? "selected" : "" %>>Asus</option>
+                    <option value="Lenovo" <%=laptop.brand==="Lenovo" ? "selected" : "" %>>Lenovo</option>
+                    <option value="Acer" <%=laptop.brand==="Acer" ? "selected" : "" %>>Acer</option>
+                    <option value="Dell" <%=laptop.brand==="Dell" ? "selected" : "" %>>Dell</option>
+                    <option value="Apple" <%=laptop.brand==="Apple" ? "selected" : "" %>>Apple</option>
+                    <option value="HP" <%=laptop.brand==="HP" ? "selected" : "" %>>HP</option>
+                    <option value="Microsoft" <%=laptop.brand==="Microsoft" ? "selected" : "" %>>Microsoft</option>
+                    <option value="MSI" <%=laptop.brand==="MSI" ? "selected" : "" %>>MSI</option>
+                    <option value="LG" <%=laptop.brand==="LG" ? "selected" : "" %>>LG</option>
+                    <option value="Razer" <%=laptop.brand==="Razer" ? "selected" : "" %>>Razer</option>
+                    <option value="Huawei" <%=laptop.brand==="Huawei" ? "selected" : "" %>>Huawei</option>
+                    <option value="Honor" <%=laptop.brand==="Honor" ? "selected" : "" %>>Honor</option>
+                    <option value="other" <%=laptop.brand==="other" ? "selected" : "" %>>other</option>
+                </select><br>
+                <label for="category">Category:</label>
+                <select id="category" name="category" required>
+                    <option value="Gaming" <%=laptop.category==="Gaming" ? "selected" : "" %>
+                        >Gaming</option>
+                    <option value="Student" <%=laptop.category==="Student" ? "selected" : "" %>
+                        >Student</option>
+                    <option value="Work" <%=laptop.category==="Work" ? "selected" : "" %>
+                        >Work</option>
+                    <option value="Designer" <%=laptop.category==="Designer" ? "selected" : "" %>
+                        >Designer</option>
+                    <option value="Sound Production" <%=laptop.category==="Sound Production" ? "selected" : "" %>
+                        >Sound Production</option>
+                </select><br>
+
+                <h2>Display</h2>
+
+                <label for="screenSize">Screen Size:</label>
+                <select id="screenSize" name="display[screenSize]" required>
+                    <option value="11.6 inches" <%=laptop.display.size==="11.6 inches" ? "selected" : "" %>>11.6 inches
+                    </option>
+                    <option value="12 inches" <%=laptop.display.size==="12 inches" ? "selected" : "" %>>12 inches
+                    </option>
+                    <option value="13 inches" <%=laptop.display.size==="13 inches" ? "selected" : "" %>>13 inches
+                    </option>
+                    <option value="13.3 inches" <%=laptop.display.size==="13.3 inches" ? "selected" : "" %>>13.3 inches
+                    </option>
+                    <option value="14 inches" <%=laptop.display.size==="14 inches" ? "selected" : "" %>>14 inches
+                    </option>
+                    <option value="15.6 inches" <%=laptop.display.size==="15.6 inches" ? "selected" : "" %>>15.6 inches
+                    </option>
+                    <option value="17 inches" <%=laptop.display.size==="17 inches" ? "selected" : "" %>>17 inches
+                    </option>
+                    <option value="17.3 inches" <%=laptop.display.size==="17.3 inches" ? "selected" : "" %>>17.3 inches
+                    </option>
+                    <option value="18 inches" <%=laptop.display.size==="18 inches" ? "selected" : "" %>>18 inches
+                    </option>
+                    <option value="other" <%=laptop.display.size==="other" ? "selected" : "" %>>other</option>
+                </select><br>
+
+                <label for="resolution">Resolution:</label>
+                <select id="resolution" name="display[resolution]" required>
+                    <option value="HD: 1366x768" <%=laptop.display.resolution==="HD: 1366x768" ? "selected" : "" %>>HD:
+                        1366x768</option>
+                    <option value="Full HD (FHD): 1920x1080" <%=laptop.display.resolution==="Full HD (FHD): 1920x1080"
+                        ? "selected" : "" %>>Full HD (FHD): 1920x1080</option>
+                    <option value="Quad HD (QHD)/2k: 2560x1440"
+                        <%=laptop.display.resolution==="Quad HD (QHD)/2k: 2560x1440" ? "selected" : "" %>>Quad HD
+                        (QHD)/2k: 2560x1440</option>
+                    <option value="Ultra (UHD HD)/4K: 3840x2160"
+                        <%=laptop.display.resolution==="Ultra (UHD HD)/4K: 3840x2160" ? "selected" : "" %>>Ultra (UHD
+                        HD)/4K: 3840x2160</option>
+                    <option value="5K: 5120x2880" <%=laptop.display.resolution==="5K: 5120x2880" ? "selected" : "" %>
+                        >5K: 5120x2880</option>
+                </select><br>
+
+                <label for="touchscreen">Touchscreen:</label>
+                <input type="checkbox" id="touchscreen" name="display[touchscreen]" <%=laptop.display.touchscreen
+                    ? "checked" : "" %>><br>
+
+
+                <label for="processor">Processor:</label>
+                <select id="processor" name="processor" required>
+                    <option value="Intel Core i3" <%=laptop.processor==="Intel Core i3" ? "selected" : "" %>>Intel Core
+                        i3</option>
+                    <option value="Intel Core i5" <%=laptop.processor==="Intel Core i5" ? "selected" : "" %>>Intel Core
+                        i5</option>
+                    <option value="Intel Core i7" <%=laptop.processor==="Intel Core i7" ? "selected" : "" %>>Intel Core
+                        i7</option>
+                    <option value="Intel Core i9" <%=laptop.processor==="Intel Core i9" ? "selected" : "" %>>Intel Core
+                        i9</option>
+                    <option value="Intel Pentium/Celeron" <%=laptop.processor==="Intel Pentium/Celeron" ? "selected"
+                        : "" %>>Intel Pentium/Celeron</option>
+                    <option value="Intel Xeon" <%=laptop.processor==="Intel Xeon" ? "selected" : "" %>>Intel Xeon
+                    </option>
+                    <option value="AMD Ryzen 3" <%=laptop.processor==="AMD Ryzen 3" ? "selected" : "" %>>AMD Ryzen 3
+                    </option>
+                    <option value="AMD Ryzen 5" <%=laptop.processor==="AMD Ryzen 5" ? "selected" : "" %>>AMD Ryzen 5
+                    </option>
+                    <option value="AMD Ryzen 7" <%=laptop.processor==="AMD Ryzen 7" ? "selected" : "" %>>AMD Ryzen 7
+                    </option>
+                    <option value="AMD Ryzen 9" <%=laptop.processor==="AMD Ryzen 9" ? "selected" : "" %>>AMD Ryzen 9
+                    </option>
+                    <option value="AMD Athlon" <%=laptop.processor==="AMD Athlon" ? "selected" : "" %>>AMD Athlon
+                    </option>
+                    <option value="other" <%=laptop.processor==="other" ? "selected" : "" %>>other</option>
+                </select><br>
+
+                <label for="ram">RAM:</label>
+                <select id="ram" name="ram" required>
+                    <option value="4GB" <%=laptop.ram==="4GB" ? "selected" : "" %>>4GB</option>
+                    <option value="8GB" <%=laptop.ram==="8GB" ? "selected" : "" %>>8GB</option>
+                    <option value="16GB" <%=laptop.ram==="16GB" ? "selected" : "" %>>16GB</option>
+                    <option value="32GB" <%=laptop.ram==="32GB" ? "selected" : "" %>>32GB</option>
+                    <option value="64GB and above" <%=laptop.ram==="64GB and above" ? "selected" : "" %>>64GB and above
+                    </option>
+                </select><br>
+
+                <label for="storage">Storage Type:</label>
+                <select id="storage" name="storage">
+                    <option value="HDD (Hard Disk Drive)" <%=laptop.storage &&
+                        laptop.storage.type==="HDD (Hard Disk Drive)" ? "selected" : "" %>>HDD (Hard Disk Drive)
+                    </option>
+                    <option value="SSD (Solid State Drive)" <%=laptop.storage &&
+                        laptop.storage.type==="SSD (Solid State Drive)" ? "selected" : "" %>>SSD (Solid State Drive)
+                    </option>
+                </select><br>
+
+                <label for="storageSize">Storage Size (GB):</label>
+                <input type="number" id="storageSize" name="storageSize"><br>
+
+                <label for="graphics">Graphics:</label>
+                <select id="graphics" name="graphics">
+                    <option value="Integrated Graphics" <%=laptop.graphics==="Integrated Graphics" ? "selected" : "" %>
+                        >Integrated Graphics</option>
+                    <option value="Dedicated Graphics (Discrete Graphics)"
+                        <%=laptop.graphics==="Dedicated Graphics (Discrete Graphics)" ? "selected" : "" %>>Dedicated
+                        Graphics (Discrete Graphics)</option>
+                    <option value="other" <%=laptop.graphics==="other" ? "selected" : "" %>>other</option>
+                </select><br>
+
+                <label for="os">OS:</label>
+                <select id="os" name="os">
+                    <option value="Windows" <%=laptop.os==="Windows" ? "selected" : "" %>>Windows</option>
+                    <option value="macOS" <%=laptop.os==="macOS" ? "selected" : "" %>>macOS</option>
+                    <option value="Chrome OS" <%=laptop.os==="Chrome OS" ? "selected" : "" %>>Chrome OS</option>
+                    <option value="Linux" <%=laptop.os==="Linux" ? "selected" : "" %>>Linux</option>
+                </select><br>
+
+                <label for="weight">Weight (kg):</label>
+                <input type="number" id="weight" name="weight"><br>
+
+                <label for="images">Images (URLs, comma-separated):</label>
+                <input type="text" id="images" name="images" required><br>
+
+                <button type="submit">Add Laptop</button>
+            </form>
+        </div>
+</body>
+
+</html>

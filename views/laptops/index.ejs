@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <title>Laptops</title>
+</head>
+<body>
+    <%- include('../partials/_navbar.ejs') %>
+    <div class="container">
+        <h1>Laptops</h1>
+        <a href="/laptops/new">Add New Laptop</a>
+        <% if (laptops.length === 0) { %>
+            <p>No laptops have been added yet.</p>
+        <% } else { %>
+            <div class="card-container">
+                <% laptops.forEach(laptop => { %>
+                    <div class="card">
+                        <img src="<%= laptop.images[0] %>" alt="<%= laptop.name %>" width="200">
+                        <h3><%= laptop.brand %> <%= laptop.name %></h3>
+                        <a href="/laptops/<%= laptop._id %>">View Details</a>
+                    </div>
+                <% }); %>
+            </div>
+        <% } %>
+    </div>
+</body>
+</html>

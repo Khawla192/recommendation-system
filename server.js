@@ -4,6 +4,7 @@ require('./config/database');
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
+
 const methodOverride = require('method-override');
 const morgan = require('morgan');
 const session = require('express-session');
@@ -24,6 +25,7 @@ const path = require('path');
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
 // app.use(morgan('dev'));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
@@ -31,7 +33,6 @@ app.use(
     saveUninitialized: true,
   })
 );
-
 app.use(passUserToView);
 
 //ROUTES

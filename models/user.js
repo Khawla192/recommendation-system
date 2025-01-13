@@ -15,19 +15,15 @@ const laptopSchema = new mongoose.Schema({
     required: true,
     enum: ['Gaming', 'Student', 'Work', 'Designer', 'Sound Production',],
   },
-  display: {
-    screenSize: {
-      type: Number,
-      required: true,
-      enum: ['11.6 inches', '12 inches', '13 inches', '13.3 inches', '14 inches', '15.6 inches', '17 inches', '17.3 inches', '18 inches', 'other',],
-    },
-    resolution: {
-      type: String, 
-      required: true,
-      enum: ['HD: 1366x768', 'Full HD (FHD): 1920x1080', 'Quad HD (QHD)/2k: 2560x1440', 'Ultra (UHD HD)/4K: 3840x2160', '5K: 5120x2880',],
-    },
-    touchscreen: Boolean,
+  screenSize: {
+    type: Number,
+    enum: ['11.6 inches', '12 inches', '13 inches', '13.3 inches', '14 inches', '15.6 inches', '17 inches', '17.3 inches', '18 inches', 'other',],
   },
+  resolution: {
+    type: String,
+    enum: ['HD: 1366x768', 'Full HD (FHD): 1920x1080', 'Quad HD (QHD)/2k: 2560x1440', 'Ultra (UHD HD)/4K: 3840x2160', '5K: 5120x2880',],
+  },
+  touchscreen: Boolean,
   processor: {
     type: String,
     required: true,
@@ -57,9 +53,9 @@ const laptopSchema = new mongoose.Schema({
   reviews: [
     {
       rating: {
-        type: Number, 
+        type: Number,
         enum: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10,]
-    },
+      },
       text: String,
     },
   ],

@@ -72,10 +72,6 @@
         <% } %>
 
         <div class="actions">
-            <a href="/users/<%= user._id %>/laptops/<%= laptop._id %>/edit">Edit</a>
-            <form action="/users/<%= user._id %>/laptops/<%= laptop._id %>?_method=DELETE" method="POST">
-                <button type="submit">Delete <%= laptop.name %></button>
-            </form>
             <a href="/users/<%= user._id %>/laptops">Back to Laptops</a>
         </div>
     </div>

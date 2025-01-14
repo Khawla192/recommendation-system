@@ -31,21 +31,6 @@ router.get('/profile', async (req, res) => {
     }
 });
 
-router.get('/:details', async (req, res) => {
-    try {
-        const { userId, laptopId } = req.params;
-        const user = await User.findById(userId);
-        const laptop = user.laptops.id(laptopId); 
-        res.render('laptops/details.ejs', {
-            laptop,
-            user,
-        });
-    } catch (error) {
-        console.log(error);
-        res.redirect('/');
-    }
-});
-
 router.get('/new', async (req, res) => {
     res.render('laptops/new.ejs');
 
@@ -75,6 +60,22 @@ router.get('/:laptopId', async (req, res) => {
         const laptop = currentUser.laptops.id(req.params.laptopId);
         res.render('laptops/show.ejs', {
             laptop
+        });
+    } catch (error) {
+        console.log(error);
+        res.redirect('/');
+    }
+});
+
+router.get('/laptops/:details', async (req, res) => {
+    try {
+        const currentUser = await User.findById(req.session.user._id);
+        const laptop = currentUser.laptops.id(req.params.laptopId);
+        // const { userId, laptopId } = req.params;
+        // const user = await User.findById(userId);
+        // const laptop = user.laptops.id(laptopId); 
+        res.render('laptops/details.ejs', {
+            laptop,
         });
     } catch (error) {
         console.log(error);

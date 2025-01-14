@@ -48,12 +48,14 @@ app.get('/', async (req, res) => {
     }
   } catch (error) {
     console.error(error);
-    res.status(500).send("An error occurred.", error);
+    // res.status(500).send("An error occurred.", error);
+    res.redirect('/');
   }
 });
 
-app.get('/showAll/:laptopId', async (req, res) => {
+app.get('/showAll/:showId', async (req, res) => {
   try {
+    res.redirect('/auth/sign-in');
     if (req.session.user) {
       res.redirect(`/users/${req.session.user._id}/laptops`);
     } else {
@@ -66,7 +68,8 @@ app.get('/showAll/:laptopId', async (req, res) => {
     }
   } catch (error) {
     console.error(error);
-    res.status(500).send("An error occurred.", error);
+    // res.status(500).send("An error occurred.", error);
+    res.redirect('/');
   }
 });
 

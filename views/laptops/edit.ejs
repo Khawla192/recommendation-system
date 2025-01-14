@@ -12,13 +12,13 @@
 <body>
     <%- include('../partials/_navbar.ejs') %>
         <div class="container">
-            <h1>Add New Laptop</h1>
-            <form action="/users/<%= user._id %>/laptops" method="POST">
+            <h1>Edit <%= laptop.name%>, <%= laptop.brand %>
+                <form action="/users/<%= user._id %>/laptops<%= laptop._id %>?_method=PUT" method="POST">
                 <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required><br>
+                <input type="text" id="name" name="name" value="<%= laptop.name %>" required><br>
 
                 <label for="brand">Brand:</label>
-                <select id="brand" name="brand" required>
+                <select id="brand" name="brand" value="<%= laptop.brand %>" required>
                     <option value="Asus" <%=laptop.brand==="Asus" ? "selected" : "" %>>Asus</option>
                     <option value="Lenovo" <%=laptop.brand==="Lenovo" ? "selected" : "" %>>Lenovo</option>
                     <option value="Acer" <%=laptop.brand==="Acer" ? "selected" : "" %>>Acer</option>
@@ -33,6 +33,7 @@
                     <option value="Honor" <%=laptop.brand==="Honor" ? "selected" : "" %>>Honor</option>
                     <option value="other" <%=laptop.brand==="other" ? "selected" : "" %>>other</option>
                 </select><br>
+
                 <label for="category">Category:</label>
                 <select id="category" name="category" required>
                     <option value="Gaming" <%=laptop.category==="Gaming" ? "selected" : "" %>
@@ -50,48 +51,47 @@
                 <h2>Display</h2>
 
                 <label for="screenSize">Screen Size:</label>
-                <select id="screenSize" name="display[screenSize]" required>
-                    <option value="11.6 inches" <%=laptop.display.size==="11.6 inches" ? "selected" : "" %>>11.6 inches
+                <select id="screenSize" name="screenSize" required>
+                    <option value="11.6 inches" <%=laptop.size==="11.6 inches" ? "selected" : "" %>>11.6 inches
                     </option>
-                    <option value="12 inches" <%=laptop.display.size==="12 inches" ? "selected" : "" %>>12 inches
+                    <option value="12 inches" <%=laptop.screenSize==="12 inches" ? "selected" : "" %>>12 inches
                     </option>
-                    <option value="13 inches" <%=laptop.display.size==="13 inches" ? "selected" : "" %>>13 inches
+                    <option value="13 inches" <%=laptop.screenSize==="13 inches" ? "selected" : "" %>>13 inches
                     </option>
-                    <option value="13.3 inches" <%=laptop.display.size==="13.3 inches" ? "selected" : "" %>>13.3 inches
+                    <option value="13.3 inches" <%=laptop.screenSize==="13.3 inches" ? "selected" : "" %>>13.3 inches
                     </option>
-                    <option value="14 inches" <%=laptop.display.size==="14 inches" ? "selected" : "" %>>14 inches
+                    <option value="14 inches" <%=laptop.screenSize==="14 inches" ? "selected" : "" %>>14 inches
                     </option>
-                    <option value="15.6 inches" <%=laptop.display.size==="15.6 inches" ? "selected" : "" %>>15.6 inches
+                    <option value="15.6 inches" <%=laptop.screenSize==="15.6 inches" ? "selected" : "" %>>15.6 inches
                     </option>
-                    <option value="17 inches" <%=laptop.display.size==="17 inches" ? "selected" : "" %>>17 inches
+                    <option value="17 inches" <%=laptop.screenSize==="17 inches" ? "selected" : "" %>>17 inches
                     </option>
-                    <option value="17.3 inches" <%=laptop.display.size==="17.3 inches" ? "selected" : "" %>>17.3 inches
+                    <option value="17.3 inches" <%=laptop.screenSize==="17.3 inches" ? "selected" : "" %>>17.3 inches
                     </option>
-                    <option value="18 inches" <%=laptop.display.size==="18 inches" ? "selected" : "" %>>18 inches
+                    <option value="18 inches" <%=laptop.screenSize==="18 inches" ? "selected" : "" %>>18 inches
                     </option>
-                    <option value="other" <%=laptop.display.size==="other" ? "selected" : "" %>>other</option>
+                    <option value="other" <%=laptop.screenSize==="other" ? "selected" : "" %>>other</option>
                 </select><br>
 
                 <label for="resolution">Resolution:</label>
-                <select id="resolution" name="display[resolution]" required>
-                    <option value="HD: 1366x768" <%=laptop.display.resolution==="HD: 1366x768" ? "selected" : "" %>>HD:
+                <select id="resolution" name="resolution" required>
+                    <option value="HD: 1366x768" <%=laptop.resolution==="HD: 1366x768" ? "selected" : "" %>>HD:
                         1366x768</option>
-                    <option value="Full HD (FHD): 1920x1080" <%=laptop.display.resolution==="Full HD (FHD): 1920x1080"
+                    <option value="Full HD (FHD): 1920x1080" <%=laptop.resolution==="Full HD (FHD): 1920x1080"
                         ? "selected" : "" %>>Full HD (FHD): 1920x1080</option>
                     <option value="Quad HD (QHD)/2k: 2560x1440"
-                        <%=laptop.display.resolution==="Quad HD (QHD)/2k: 2560x1440" ? "selected" : "" %>>Quad HD
+                        <%=laptop.resolution==="Quad HD (QHD)/2k: 2560x1440" ? "selected" : "" %>>Quad HD
                         (QHD)/2k: 2560x1440</option>
                     <option value="Ultra (UHD HD)/4K: 3840x2160"
-                        <%=laptop.display.resolution==="Ultra (UHD HD)/4K: 3840x2160" ? "selected" : "" %>>Ultra (UHD
+                        <%=laptop.resolution==="Ultra (UHD HD)/4K: 3840x2160" ? "selected" : "" %>>Ultra (UHD
                         HD)/4K: 3840x2160</option>
-                    <option value="5K: 5120x2880" <%=laptop.display.resolution==="5K: 5120x2880" ? "selected" : "" %>
+                    <option value="5K: 5120x2880" <%=laptop.resolution==="5K: 5120x2880" ? "selected" : "" %>
                         >5K: 5120x2880</option>
                 </select><br>
 
                 <label for="touchscreen">Touchscreen:</label>
-                <input type="checkbox" id="touchscreen" name="display[touchscreen]" <%=laptop.display.touchscreen
+                <input type="checkbox" id="touchscreen" name="touchscreen" <%=laptop.touchscreen
                     ? "checked" : "" %>><br>
-
 
                 <label for="processor">Processor:</label>
                 <select id="processor" name="processor" required>
@@ -141,7 +141,7 @@
                 </select><br>
 
                 <label for="storageSize">Storage Size (GB):</label>
-                <input type="number" id="storageSize" name="storageSize"><br>
+                <input type="number" id="storageSize" name="storageSize" value="<%= laptop.storageSize %>"><br>
 
                 <label for="graphics">Graphics:</label>
                 <select id="graphics" name="graphics">
@@ -162,12 +162,16 @@
                 </select><br>
 
                 <label for="weight">Weight (kg):</label>
-                <input type="number" id="weight" name="weight"><br>
+                <input type="number" id="weight" name="weight" value="<%= laptop.weight %>"><br>
 
                 <label for="images">Images (URLs, comma-separated):</label>
-                <input type="text" id="images" name="images" required><br>
+                <input type="text" id="images" name="images" 
+                <% if (laptop.images && laptop.images.length > 0) { %>
+                    value="<%= laptop.images.join(',') %>"  
+                <% } %> 
+                required><br>
 
-                <button type="submit">Add Laptop</button>
+                <button type="submit">Update <%= laptop.name %></button>
             </form>
         </div>
 </body>

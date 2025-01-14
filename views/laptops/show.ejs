@@ -1,61 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/stylesheets/show.css" />
-    <title><%= laptop.name %></title>
+    <title>
+        <%= laptop.name %>
+    </title>
 </head>
+
 <body>
     <%- include('../partials/_navbar.ejs') %>
 
-    <div class="container">
-        <h1><%= laptop.name %></h1>
-
-        <% laptop.images.forEach(image => { %>
-            <img src="<%= image %>" alt="<%= laptop.name %>">
-        <% }); %>
-
-        <div class="details">
-            <p><strong>Brand:</strong> <%= laptop.brand %></p>
-            <p><strong>Category:</strong> <%= laptop.category %></p>
-            <p><strong>Display:</strong> <%= laptop.display.screenSize %>, <%= laptop.display.resolution %><% if (laptop.display.touchscreen) { %>, Touchscreen<% } %></p>
-            <p><strong>Processor:</strong> <%= laptop.processor %></p>
-            <p><strong>RAM:</strong> <%= laptop.ram %></p>
-            <% if (laptop.storage) { %>
-                <p><strong>Storage:</strong> <%= laptop.storage %><% if (laptop.storageSize) { %> (<%= laptop.storageSize %> GB)<% } %></p>
-            <% } %>
-            <% if (laptop.graphics) { %>
-                <p><strong>Graphics:</strong> <%= laptop.graphics %></p>
-            <% } %>
-            <% if (laptop.os) { %>
-                <p><strong>OS:</strong> <%= laptop.os %></p>
-            <% } %>
-            <% if (laptop.weight) { %>
-                <p><strong>Weight:</strong> <%= laptop.weight %> kg</p>
-            <% } %>
-        </div>
-
-        <% if (laptop.reviews && laptop.reviews.length > 0) { %>
-            <div class="reviews">
-                <h2>Reviews</h2>
-                <% laptop.reviews.forEach(review => { %>
-                    <div class="review">
-                        <p><strong>Rating:</strong> <%= review.rating %>/10</p>
-                        <p><%= review.text %></p>
-                    </div>
-                <% }); %>
+        <div class="container">
+            <div class="header">
+                <h1>
+                    <%= laptop.name %>
+                </h1>
             </div>
-        <% } %>
+            <div class="info">
+                <div class="picture">
+                    <% laptop.images.forEach(image=> { %>
+                        <img src="<%= image %>" alt="<%= laptop.name %>">
+                    <% }); %>
+                </div>
+                <div class="details">
+                    <p><strong>Brand:</strong>
+                        <%= laptop.brand %>
+                    </p>
+                    <p><strong>Category:</strong>
+                        <%= laptop.category %>
+                    </p>
+                    <p><strong>Display:</strong>
+                        <%= laptop.screenSize %>, <%= laptop.resolution %>
+                                <% if (laptop.touchscreen) { %>
+                                    , Touchscreen 
+                                <% } %>
+                    </p>
+                    <p><strong>Processor:</strong>
+                        <%= laptop.processor %>
+                    </p>
+                    <p><strong>RAM:</strong>
+                        <%= laptop.ram %>
+                    </p>
+                    <% if (laptop.storage) { %>
+                        <p><strong>Storage:</strong>
+                            <%= laptop.storage %>
+                                <% if (laptop.storageSize) { %> 
+                                    (<%= laptop.storageSize %> GB)
+                                <% } %>
+                        </p>
+                        <% } %>
+                            <% if (laptop.graphics) { %>
+                                <p><strong>Graphics:</strong>
+                                    <%= laptop.graphics %>
+                                </p>
+                                <% } %>
+                                    <% if (laptop.os) { %>
+                                        <p><strong>OS:</strong>
+                                            <%= laptop.os %>
+                                        </p>
+                                        <% } %>
+                                            <% if (laptop.weight) { %>
+                                                <p><strong>Weight:</strong>
+                                                    <%= laptop.weight %> kg
+                                                </p>
+                                                <% } %>
+                </div>
 
-        <div class="actions">
-          <a href="/laptops/<%=laptop._id%>/edit">Edit</a>
-          <form action="/laptops/<%=laptop._id%>?_method=DELETE" method="POST">
-            <input type="hidden" name="_method" value="DELETE">
-            <button>Delete</button>
-          </form>
-          <a href="/laptops">Back to index</a>
+            </div>
+            
+            <% if (laptop.reviews && laptop.reviews.length> 0) { %>
+                <div class="reviews">
+                    <h2>Reviews</h2>
+                    <% laptop.reviews.forEach(review=> { %>
+                        <div class="review">
+                            <p><strong>Rating:</strong>
+                                <%= review.rating %>/10
+                            </p>
+                            <p>
+                                <%= review.text %>
+                            </p>
+                        </div>
+                        <% }); %>
+                </div>
+                <% } %>
+
+                <div class="actions">
+                    <a href="/users/<%= user._id %>/laptops/<%=laptop._id%>/edit">Edit</a>
+                    <form action="/laptops/<%=laptop._id%>?_method=DELETE" method="POST">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button>Delete</button>
+                    </form>
+                    <a href="/users/<%=user._id%>/laptops">Back to Homepage</a>
+                </div>
         </div>
-    </div>
 </body>
+
 </html>

@@ -70,7 +70,8 @@ router.get('/:laptopId/edit', async (req, res) => {
         });
     } catch (error) {
         console.log(error);
-        res.redirect('/');
+        return res.status(500).send('Error rendering the page. Please try again.');
+        // res.redirect('/');
     }
 });
 
@@ -85,7 +86,8 @@ router.put('/:laptopId', async (req, res) => {
         );
     } catch (error) {
         console.log(error);
-        res.redirect('/');
+        return res.status(500).send('Error Edit item. Please try again.');
+        // res.redirect('/');
     }
 });
 

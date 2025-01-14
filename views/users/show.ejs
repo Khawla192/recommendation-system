@@ -9,30 +9,46 @@
         <%= user.username %>'s Laptops
     </title>
 </head>
+
 <body>
     <%- include('../partials/_navbar.ejs') %>
-    <div class="show-body">
-        <div class="show-header">
-            <h1>
-                <%= user.username %>'s Laptops
-            </h1>
+        <div class="show-body">
+            <div class="show-header">
+                <h1>
+                    <%= user.username %>'s Laptops
+                </h1>
+            </div>
+            <div class="show-sidebar">
+                <% if (user.laptops.length> 0) { %>
+                    <ul>
+                        <% user.laptops.forEach(laptop=> { %>
+                            <li>
+                                <div class="header">
+                                    <h1>
+                                        <%= laptop.name %>
+                                    </h1>
+                                </div>
+                                <div class="details">
+                                    <p><strong>Brand:</strong>
+                                        <%= laptop.brand %>
+                                    </p>
+                                </div>
+                                <div class="info">
+                                <div class="picture">
+                                    <% laptop.images.forEach(image=> { %>
+                                        <img src="<%= image %>" alt="<%= laptop.name %>">
+                                        <% }); %>
+                                </div>
+                            </li>
+                            <% }); %>
+                    </ul>
+                    <% } else { %>
+                        <p>
+                            <%= user.username %> has not added any laptop.
+                        </p>
+                        <% } %>
+            </div>
         </div>
-        <div class="show-sidebar">
-            <% if (user.laptop.length > 0) { %>
-                <ul>
-                    <% user.laptop.forEach(item=> { %>
-                        <li>
-                            <%= item.name %>
-                        </li>
-                        <% }); %>
-                </ul>
-                <% } else { %>
-                    <p>
-                        <%= user.username %> has no items in their pantry.
-                    </p>
-                    <% } %>
-        </div>
-    </div>
 </body>
 
 </html>

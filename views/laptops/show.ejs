@@ -89,9 +89,8 @@
 
                 <div class="actions">
                     <a href="/users/<%= user._id %>/laptops/<%=laptop._id%>/edit">Edit</a>
-                    <form action="/laptops/<%=laptop._id%>?_method=DELETE" method="POST">
-                        <input type="hidden" name="_method" value="DELETE">
-                        <button>Delete</button>
+                    <form action="/users/<%= user._id %>/laptops/<%=laptop._id%>?_method=DELETE" method="POST">
+                        <button type="submit">Delete <%=laptop.name%></button>
                     </form>
                     <a href="/users/<%=user._id%>/laptops">Back to Homepage</a>
                 </div>

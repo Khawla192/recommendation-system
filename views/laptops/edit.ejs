@@ -12,8 +12,8 @@
 <body>
     <%- include('../partials/_navbar.ejs') %>
         <div class="container">
-            <h1>Edit <%= laptop.name%>, <%= laptop.brand %>
-                <form action="/users/<%= user._id %>/laptops<%= laptop._id %>?_method=PUT" method="POST">
+            <h1>Edit <%= laptop.name%>, <%= laptop.brand %></h1>
+            <form action="/users/<%= user._id %>/laptops/<%= laptop._id %>?_method=PUT" method="POST">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" value="<%= laptop.name %>" required><br>
 
@@ -79,19 +79,19 @@
                         1366x768</option>
                     <option value="Full HD (FHD): 1920x1080" <%=laptop.resolution==="Full HD (FHD): 1920x1080"
                         ? "selected" : "" %>>Full HD (FHD): 1920x1080</option>
-                    <option value="Quad HD (QHD)/2k: 2560x1440"
-                        <%=laptop.resolution==="Quad HD (QHD)/2k: 2560x1440" ? "selected" : "" %>>Quad HD
+                    <option value="Quad HD (QHD)/2k: 2560x1440" <%=laptop.resolution==="Quad HD (QHD)/2k: 2560x1440"
+                        ? "selected" : "" %>>Quad HD
                         (QHD)/2k: 2560x1440</option>
-                    <option value="Ultra (UHD HD)/4K: 3840x2160"
-                        <%=laptop.resolution==="Ultra (UHD HD)/4K: 3840x2160" ? "selected" : "" %>>Ultra (UHD
+                    <option value="Ultra (UHD HD)/4K: 3840x2160" <%=laptop.resolution==="Ultra (UHD HD)/4K: 3840x2160"
+                        ? "selected" : "" %>>Ultra (UHD
                         HD)/4K: 3840x2160</option>
                     <option value="5K: 5120x2880" <%=laptop.resolution==="5K: 5120x2880" ? "selected" : "" %>
                         >5K: 5120x2880</option>
                 </select><br>
 
                 <label for="touchscreen">Touchscreen:</label>
-                <input type="checkbox" id="touchscreen" name="touchscreen" <%=laptop.touchscreen
-                    ? "checked" : "" %>><br>
+                <input type="checkbox" id="touchscreen" name="touchscreen" <%=laptop.touchscreen ? "checked" : ""
+                    %>><br>
 
                 <label for="processor">Processor:</label>
                 <select id="processor" name="processor" required>
@@ -167,8 +167,8 @@
                 <label for="images">Images (URLs, comma-separated):</label>
                 <input type="text" id="images" name="images" 
                 <% if (laptop.images && laptop.images.length > 0) { %>
-                    value="<%= laptop.images.join(',') %>"  
-                <% } %> 
+                    value="<%= laptop.images.join(',') %>"
+                <% } %>
                 required><br>
 
                 <button type="submit">Update <%= laptop.name %></button>

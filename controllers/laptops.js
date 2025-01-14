@@ -42,6 +42,7 @@ router.get('/:laptopId', async (req, res) => {
         res.render('laptops/show.ejs', {
             laptop
         });
+        console.log(laptop)
     } catch (error) {
         console.log(error);
         res.redirect('/');
@@ -86,7 +87,7 @@ router.put('/:laptopId', async (req, res) => {
         );
     } catch (error) {
         console.log(error);
-        return res.status(500).send('Error Edit item. Please try again.');
+        return res.status(500).send('Error Editting the item. Please try again.');
         // res.redirect('/');
     }
 });

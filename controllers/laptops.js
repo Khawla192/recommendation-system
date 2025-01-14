@@ -42,7 +42,7 @@ router.get('/:laptopId', async (req, res) => {
         res.render('laptops/show.ejs', {
             laptop
         });
-        console.log(laptop)
+        // console.log(laptop)
     } catch (error) {
         console.log(error);
         res.redirect('/');
@@ -57,8 +57,8 @@ router.delete('/:laptopId', async (req, res) => {
         res.redirect(`/users/${currentUser._id}/laptops`);
     } catch (error) {
         console.log(error);
-        return res.status(500).send('Error deleting item. Please try again.');
-        // res.redirect('/');
+        // return res.status(500).send('Error deleting item. Please try again.');
+        res.redirect('/');
     }
 });
 
@@ -71,8 +71,8 @@ router.get('/:laptopId/edit', async (req, res) => {
         });
     } catch (error) {
         console.log(error);
-        return res.status(500).send('Error rendering the page. Please try again.');
-        // res.redirect('/');
+        // return res.status(500).send('Error rendering the page. Please try again.');
+        res.redirect('/');
     }
 });
 
@@ -87,8 +87,8 @@ router.put('/:laptopId', async (req, res) => {
         );
     } catch (error) {
         console.log(error);
-        return res.status(500).send('Error Editting the item. Please try again.');
-        // res.redirect('/');
+        // return res.status(500).send('Error Editting the item. Please try again.');
+        res.redirect('/');
     }
 });
 

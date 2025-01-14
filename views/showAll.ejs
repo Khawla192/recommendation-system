@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/show.css" />
+    <title>
+        <%= laptop.name %>
+    </title>
+</head>
+
+<body>
+    <%- include('./partials/_navbar.ejs') %>
+        <div class="container">
+            <% if (laptop) { %>
+                <div class="header">
+                    <h1>
+                        <%= laptop.name %>
+                    </h1>
+                </div>
+
+                <div class="info">
+                    <div class="picture">
+                        <% if (laptop.images) { %>
+                            <img src="<%= laptop.images %>" alt="<%= laptop.name %>">
+                            <% } else { %>
+                                <p>No image available</p>
+                                <% } %>
+                    </div>
+                    <div class="details">
+                        <p><strong>Brand:</strong>
+                            <%= laptop.brand %>
+                        </p>
+                        <p><strong>Category:</strong>
+                            <%= laptop.category %>
+                        </p>
+                        <p><strong>Display:</strong>
+                            <%= laptop.screenSize %>, <%= laptop.resolution %>
+                                    <% if (laptop.touchscreen) { %>
+                                        , Touchscreen 
+                                    <% } %>
+                        </p>
+                        <p><strong>Processor:</strong>
+                            <%= laptop.processor %>
+                        </p>
+                        <p><strong>RAM:</strong>
+                            <%= laptop.ram %>
+                        </p>
+
+                        <% if (laptop.storage) { %>
+                            <p><strong>Storage:</strong>
+                                <%= laptop.storage %>
+                                    <% if (laptop.storageSize) { %> 
+                                        (<%= laptop.storageSize %> GB) 
+                                    <% } %>
+                            </p>
+                            <% } %>
+
+                                <% if (laptop.graphics) { %>
+                                    <p><strong>Graphics:</strong>
+                                        <%= laptop.graphics %>
+                                    </p>
+                                    <% } %>
+                                        <% if (laptop.os) { %>
+                                            <p><strong>OS:</strong>
+                                                <%= laptop.os %>
+                                            </p>
+                                            <% } %>
+                                                <% if (laptop.weight) { %>
+                                                    <p><strong>Weight:</strong>
+                                                        <%= laptop.weight %> kg
+                                                    </p>
+                                                    <% } %>
+                    </div>
+                </div>
+
+                <% if (laptop.reviews && laptop.reviews.length> 0) { %>
+                    <div class="reviews">
+                        <h2>Reviews</h2>
+                        <% laptop.reviews.forEach(review=> { %>
+                            <div class="review">
+                                <p><strong>Rating:</strong>
+                                    <%= review.rating %>/10
+                                </p>
+                                <p>
+                                    <%= review.text %>
+                                </p>
+                            </div>
+                            <% }); %>
+                    </div>
+                    <% } %>
+
+                        <div class="actions">
+                            <a href="/">Back to Homepage</a>
+                        </div>
+                        <% } else { %>
+                            <p>Laptop not found.</p>
+                            <% } %>
+        </div>
+</body>
+
+</html>

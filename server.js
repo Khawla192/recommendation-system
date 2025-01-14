@@ -20,6 +20,7 @@ const authController = require('./controllers/auth.js');
 
 const port = process.env.PORT ? process.env.PORT : '3000';
 const path = require('path');
+const User = require('./models/user.js');
 
 // MIDDLEWARE
 app.use(express.urlencoded({ extended: false }));
@@ -37,18 +38,42 @@ app.use(passUserToView);
 
 //ROUTES
 // PUBLIC ROUTES
-app.get('/', (req, res) => {
-  if (req.session.user) {
-    res.redirect(`/users/${req.session.user._id}/laptops`);
-  } else {
-    res.render('index.ejs');
+app.get('/', async (req, res) => {
+  try {
+    if (req.session.user) {
+      res.redirect(`/users/${req.session.user._id}/laptops`);
+    } else {
+      const allUsers = await User.find().populate('laptops');
+      res.render('index.ejs', { users: allUsers });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("An error occurred.", error);
+  }
+});
+
+app.get('/showAll/:laptopId', async (req, res) => {
+  try {
+    if (req.session.user) {
+      res.redirect(`/users/${req.session.user._id}/laptops`);
+    } else {
+      const allUsers = await User.find().populate('laptops');
+      const laptop = allUsers.laptops || [];
+      res.render('showAll.ejs', {
+        laptop,
+        user: allUsers,
+      });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("An error occurred.", error);
   }
 });
 
 // PROTECTED ROUTES
 app.use('/auth', authController);
 app.use(isSignedIn);
-app.use('/users/:userId/laptops', laptopsController); 
+app.use('/users/:userId/laptops', laptopsController);
 app.use('/users', usersController);
 
 // LISTENER

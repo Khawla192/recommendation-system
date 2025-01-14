@@ -16,7 +16,7 @@ const laptopSchema = new mongoose.Schema({
     enum: ['Gaming', 'Student', 'Work', 'Designer', 'Sound Production',],
   },
   screenSize: {
-    type: Number,
+    type: String,
     enum: ['11.6 inches', '12 inches', '13 inches', '13.3 inches', '14 inches', '15.6 inches', '17 inches', '17.3 inches', '18 inches', 'other',],
   },
   resolution: {

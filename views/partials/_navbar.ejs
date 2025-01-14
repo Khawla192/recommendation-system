@@ -14,9 +14,9 @@
             <div class="navbar">
                 <h1 id="nav-header">Recommindation System</h1>
                 <div class="nav-links">
-                    <a class="authlink" href="/users/<%=user._id%>/laptops">Profile</a>
+                    <a class="authlink" href="/users/<%=user._id%>/laptops">Homepage</a>
+                    <a class="authlink" href="/users/<%=user._id%>/laptops/Profile">Profile</a>
                     <a class="authlink" href="/users/<%= user._id %>/laptops/new">Add a Laptop</a>
-                    <a class="authlink" href="/users/<%= user._id %>/laptops/show">View Laptops</a>
                     <a class="authlink" href="/users">Community</a>
                     <a class="authlink" href="/auth/sign-out">Sign Out</a>
                 </div>
@@ -25,6 +25,7 @@
                 <div class="navbar">
                     <h1 id="nav-header">Recommindation System</h1>
                     <div class="nav-links">
+                        <a class="authlink" href="/">Homepage</a>
                         <a class="authlink" href="/auth/sign-in">Sign In</a>
                         <a class="authlink" href="/auth/sign-up">Sign Up</a>
                     </div>

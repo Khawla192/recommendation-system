@@ -124,8 +124,19 @@ When adding a laptop recommendation, the form includes the following fields:
 - **Create a Dynamic Layout**:
   - Implement a dynamic layout that adapts based on the number of categories or items added to the system. For instance, as new categories (e.g., gadgets, clothing) are added, the homepage layout will automatically update.
 
-- **Integrate with External APIs (Optional)**:
-  - Integrate external APIs to pull in product details from trusted sources (e.g., car specifications, smartphone features) to ensure the recommendations are up-to-date and accurate.
+- **Security Enhancements**:
+  - **User Authentication**: Implement secure user authentication. Ensure that users can sign up, log in, and securely manage their accounts.
+  - **Email Verification**: Add an email verification process during sign-up. Users will need to verify their email address before they can fully access the platform and submit recommendations.
+  - **Password Security**: Use hashing algorithms like bcrypt to securely store user passwords. This ensures that even if the database is compromised, user passwords remain protected.
+  - **Account Recovery**: Provide users with the ability to reset their password through a secure email-based process, using secure tokens.
+
+- **Add Email for Sign-Up**:
+  - Implement an email-based sign-up system where users can register with their email address and a password.
+  - After sign-up, users will receive an email with a verification link to activate their account.
+  - Include validation for valid email formats and ensure that email addresses are unique during registration to prevent duplicates.
+
+- **Create a Customizable User Experience**:
+  - Add notifications for new recommendations in categories the user follows or has previously interacted with.
 
 ----------
 

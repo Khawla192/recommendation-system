@@ -20,6 +20,32 @@
         <a class="signin-link" href="/auth/sign-in">Sign In</a>
       </div>
     </div>
+    <div class="container">
+      <h1>Laptop Recommendations</h1>
+      <% if (users.length === 0) { %>
+        <p>No users have laptops yet.</p>
+        <% } else { %>
+          <div class="card-container">
+            <% users.forEach(user => { %>
+              <% if (user.laptops.length > 0) { %>
+                <% user.laptops.forEach(laptop => { %>
+                  <div class="card">
+                    <img src="<%= laptop.images[0] %>" alt="<%= laptop.name %>" width="200">
+                    <h3>
+                      <%= laptop.brand %> - <%= laptop.name %>
+                    </h3>
+                    <a href="/showAll/<%= laptop._id %>">View Details</a>
+                  </div>
+                  <% }); %>
+                    <% } else { %>
+                      <p>
+                        <%= user.username %> has no laptops listed.
+                      </p>
+                      <% } %>
+                        <% }); %>
+          </div>
+        <% } %>
+    </div>
 </body>
 
 </html>

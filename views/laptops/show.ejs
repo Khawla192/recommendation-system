@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/stylesheets/show.css" />
     <title>
-        <%= laptops.find(l => l._id === laptopId).name %>
+        <%= laptop.name %>
     </title>
 </head>
 
@@ -21,7 +21,7 @@
             </div>
             <div class="info">
                 <div class="picture">
-                    <% laptop.images.forEach(image=> { %>
+                    <% laptop.images.forEach(image => { %>
                         <img src="<%= image %>" alt="<%= laptop.name %>">
                     <% }); %>
                 </div>

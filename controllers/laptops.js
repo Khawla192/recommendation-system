@@ -5,8 +5,23 @@ const User = require('../models/user.js');
 router.get('/', async (req, res) => {
     try {
         const currentUser = await User.findById(req.session.user._id);
+        const allUsers = await User.find().populate('laptops');
         const laptop = currentUser.laptops || [];
         res.render('laptops/index.ejs', {
+            users: allUsers,
+            laptop,
+        });
+    } catch (error) {
+        console.log(error);
+        res.redirect('/');
+    }
+});
+
+router.get('/profile', async (req, res) => {
+    try {
+        const currentUser = await User.findById(req.session.user._id);
+        const laptop = currentUser.laptops || [];
+        res.render('laptops/profile.ejs', {
             user: currentUser,
             laptop,
         });
@@ -16,13 +31,33 @@ router.get('/', async (req, res) => {
     }
 });
 
+router.get('/:details', async (req, res) => {
+    try {
+        const { userId, laptopId } = req.params;
+        const user = await User.findById(userId);
+        const laptop = user.laptops.id(laptopId); 
+        res.render('laptops/details.ejs', {
+            laptop,
+            user,
+        });
+    } catch (error) {
+        console.log(error);
+        res.redirect('/');
+    }
+});
+
 router.get('/new', async (req, res) => {
     res.render('laptops/new.ejs');
-    
+
 });
 
 router.post('/', async (req, res) => {
     try {
+        if (req.body.touchscreen === "on") {
+            req.body.touchscreen = true
+        } else {
+            req.body.touchscreen = false
+        }
         const currentUser = await User.findById(req.session.user._id);
         const newLaptop = req.body;
         currentUser.laptops.push(newLaptop);
@@ -30,8 +65,7 @@ router.post('/', async (req, res) => {
         res.redirect(`/users/${currentUser._id}/laptops`);
     } catch (error) {
         console.log(error);
-        return res.status(500).send('Error adding item. Please try again.', error);
-        // res.redirect('/');
+        res.redirect('/');
     }
 });
 
@@ -42,7 +76,6 @@ router.get('/:laptopId', async (req, res) => {
         res.render('laptops/show.ejs', {
             laptop
         });
-        // console.log(laptop)
     } catch (error) {
         console.log(error);
         res.redirect('/');
@@ -57,7 +90,6 @@ router.delete('/:laptopId', async (req, res) => {
         res.redirect(`/users/${currentUser._id}/laptops`);
     } catch (error) {
         console.log(error);
-        // return res.status(500).send('Error deleting item. Please try again.');
         res.redirect('/');
     }
 });
@@ -71,13 +103,17 @@ router.get('/:laptopId/edit', async (req, res) => {
         });
     } catch (error) {
         console.log(error);
-        // return res.status(500).send('Error rendering the page. Please try again.');
         res.redirect('/');
     }
 });
 
 router.put('/:laptopId', async (req, res) => {
     try {
+        if (req.body.touchscreen === "on") {
+            req.body.touchscreen = true
+        } else {
+            req.body.touchscreen = false
+        }
         const currentUser = await User.findById(req.session.user._id);
         const laptop = currentUser.laptops.id(req.params.laptopId);
         laptop.set(req.body);
@@ -87,7 +123,6 @@ router.put('/:laptopId', async (req, res) => {
         );
     } catch (error) {
         console.log(error);
-        // return res.status(500).send('Error Editting the item. Please try again.');
         res.redirect('/');
     }
 });

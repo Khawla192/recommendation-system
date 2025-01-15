@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/show.css" />
     <title>
         <%= user.username %>'s Laptops
     </title>
@@ -18,26 +18,28 @@
                     <%= user.username %>'s Laptops
                 </h1>
             </div>
-            <div class="show-sidebar">
+            <div class="card-info">
                 <% if (user.laptops.length> 0) { %>
                     <ul>
                         <% user.laptops.forEach(laptop=> { %>
                             <li>
-                                <div class="header">
-                                    <h1>
+                                <div class="laptop-card">
+                                    <h2>
                                         <%= laptop.name %>
-                                    </h1>
+                                    </h2>
                                 </div>
                                 <div class="details">
                                     <p><strong>Brand:</strong>
                                         <%= laptop.brand %>
                                     </p>
                                 </div>
-                                <div class="info">
                                 <div class="picture">
                                     <% laptop.images.forEach(image=> { %>
                                         <img src="<%= image %>" alt="<%= laptop.name %>">
                                         <% }); %>
+                                </div>
+                                <div class="view-details">
+                                    <a href="/user/<%= user._id %>/laptops/<%= laptop._id %>" class="view-details-link">View Details</a>
                                 </div>
                             </li>
                             <% }); %>

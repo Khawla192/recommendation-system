@@ -1,10 +1,273 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
 body {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  width: 100vw;
-  /* background-color: #9ac2ef; */
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7fc;
+}
+
+/* laptops/show and showAll */
+.container {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.header h1 {
+    font-size: 2.5em;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.info {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.picture {
+    flex: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 10px;
+    max-width: 50%;
+    height: auto;
+}
+
+.picture img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.details {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 1.1em;
+}
+
+.details p {
+    color: #555;
+}
+
+.details strong {
+    color: #1c2e5b;
+}
+
+.reviews {
+    margin-top: 40px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.reviews h2 {
+    font-size: 1.8em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.review {
+    background-color: white;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.review p {
+    font-size: 1.1em;
+    color: #555;
+}
+
+.review strong {
+    color: #1c2e5b;
+}
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    font-size: 1.1em;
+}
+
+.actions a,
+.actions button {
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 25px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.actions a {
+    background-color: #ce4866;
+    color: white;
+}
+
+.actions a:hover {
+    background-color: #ff5378;
+}
+
+.actions button {
+    background-color: #f6e7e7;
+    color: #1c2e5b;
+    border: none;
+    cursor: pointer;
+}
+
+.actions button:hover {
+    background-color: #ff5378;
+    color: white;
+}
+
+.actions a:last-child {
+    background-color: #1c2e5b;
+    color: white;
+}
+
+.actions a:last-child:hover {
+    background-color: #333;
+}
+
+form {
+    display: inline;
+    margin: 0;
+}
+
+/* users/show */
+.show-body {
+    width: 90%;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+
+.show-header h1 {
+    text-align: center;
+    font-size: 2rem;
+    color: #333;
+}
+
+.card-info ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+}
+
+.card-info li {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 280px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.card-info li:hover {
+    transform: translateY(-5px);
+}
+
+.laptop-card h2 {
+    background-color: #ffffff;
+    color: #252020;
+    padding: 10px;
+    margin: 0;
+    text-align: center;
+}
+
+.card-info .details {
+    padding: 10px;
+    background-color: #f9f9f9;
+}
+
+.card-info .details p {
+    margin: 0;
+    color: #333;
+}
+
+.card-info .details strong {
+    color: #1c2e5b;
+}
+
+.card-info .picture img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-top: 1px solid #ddd;
+}
+
+.view-details {
+    text-align: center;
+    padding: 10px;
+}
+
+.view-details-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ce4866; 
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-bottom: 20px; 
+}
+
+.view-details-link:hover {
+    background-color: #ff5378; 
+    transform: scale(1.05); 
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .info {
+        flex-direction: column;
+    }
+
+    .picture img {
+        width: 80%;
+        height: auto;
+    }
+
+    .details p {
+        font-size: 1.2em;
+    }
+
+    .reviews {
+        margin-top: 20px;
+    }
+
+    .actions {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .show-body {
+        width: 95%;
+        padding: 20px;
+    }
+  
+    .show-header h1 {
+        font-size: 2rem;
+    }
+  
+    .laptop-card {
+        width: 100%;
+        margin-bottom: 20px;
+    }
 }

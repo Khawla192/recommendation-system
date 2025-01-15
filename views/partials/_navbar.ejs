@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/stylesheets/partials.css" />
-    <title>Skyrockit</title>
+    <title>Power Portables</title>
 </head>
 
 <body>
     <nav>
         <% if(user) { %>
             <div class="navbar">
-                <h1 id="nav-header">Recommindation System</h1>
+                <h1 id="nav-header">PowerPortables</h1>
                 <div class="nav-links">
                     <a class="authlink" href="/users/<%=user._id%>/laptops">Homepage</a>
                     <a class="authlink" href="/users/<%=user._id%>/laptops/Profile">Profile</a>
@@ -23,7 +23,7 @@
             </div>
             <% } else { %>
                 <div class="navbar">
-                    <h1 id="nav-header">Recommindation System</h1>
+                    <h1 id="nav-header">PowerPortables</h1>
                     <div class="nav-links">
                         <a class="authlink" href="/">Homepage</a>
                         <a class="authlink" href="/auth/sign-in">Sign In</a>

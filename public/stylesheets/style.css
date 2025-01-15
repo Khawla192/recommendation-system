@@ -1,10 +1,387 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
 body {
+    margin: 0;
     font-family: 'Poppins', sans-serif;
     display: flex;
     flex-direction: column;
     height: 100vh;
     width: 100vw;
-    /* background-color: #9ac2ef; */
+    background-color: #ffffff00;
+}
+
+/* auth/sign-in and sign-up */
+.signin-container,
+.signup-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 20em;
+    height: 50%;
+    background-color: #f2f2f280;
+    padding: 30px 40px 20px 40px;
+    border-radius: 20px;
+    color: #4b5a8e;
+    font-weight: bold;
+}
+
+/* index Page */
+.index-body {
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    height: 100%;
+}
+
+.index-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.text-container {
+    max-width: 60%;
+}
+
+.main-header {
+    font-weight: bold;
+    font-size: 4em;
+    color: #1c2e5b;
+}
+
+.subheader {
+    font-size: 1.4em;
+    color: #1c2e5b;
+    text-align: center;
+}
+
+.auth-links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.signup-link,
+.signin-link {
+    text-decoration: none;
+    font-size: 1em;
+    padding: 8px 0;
+    border-radius: 25px;
+    width: 10em;
+    text-align: center;
+}
+
+.signup-link {
+    background-color: #ce4866;
+    color: white;
+    margin: 0 0 20px 0;
+}
+
+.signup-link:hover {
+    background-color: #ff5378;
+}
+
+.signin-link {
+    background-color: #f6e7e7;
+    color: #1c2e5b;
+    margin: 0 0 20px 0;
+}
+
+.signin-link:hover {
+    background-color: #ffffff;
+}
+
+/* Laptop Cards Section */
+/* index and laptops/index */
+.container {
+    padding: 50px 20px;
+    text-align: center;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    flex: 1; */
+}
+
+/* h1, */
+.container-h1 {
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+}
+
+.card-info {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-info img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    object-fit: cover;
+}
+
+.card-info h3 {
+    font-size: 1.2em;
+    margin: 10px 0;
+    color: #333;
+}
+
+.card-info a {
+    text-decoration: none;
+    background-color: #ce4866;
+    color: white;
+    padding: 8px 20px;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.card-info a:hover {
+    background-color: #ff5378;
+}
+
+.card-info:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* laptops/index */
+.add-app-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ce4866; 
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-bottom: 20px; 
+    border: none;
+}
+
+.add-app-link:hover {
+    background-color: #ff5378; 
+    transform: scale(1.05); 
+}
+
+.add-app-link:active {
+    background-color: #ff5378; 
+}
+
+/* laptops/new and edit*/
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 5px;
+}
+
+.new-body, 
+.edit-body {
+    background: rgba(255, 255, 255, 0);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 30px 40px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* input desgin */
+label {
+    font-weight: bold;
+    color: #1c2e5b;
+    font-size: 1em;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="checkbox"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+
+input[type="text"]:focus,
+select:focus,
+input[type="number"]:focus {
+    outline-color: #ce4866;
+    border-color: #ce4866;
+}
+
+textarea,
+select {
+    border: 1px solid rgb(182, 182, 182);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+select {
+    margin-bottom: 10px;
+}
+
+button[type="submit"] {
+    background-color: #ce4866;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #ff5378;
+}
+
+.cancel-btn {
+    text-decoration: none;
+    color: #1c2e5b;
+    font-size: 1em;
+    padding: 10px 20px;
+    border-radius: 25px;
+    background-color: #f6e7e7;
+}
+
+.cancel-btn:hover {
+    background-color: #ff5378;
+    color: white;
+}
+
+/* users/index */
+.all-apps-body {
+    width: 80%;
+    margin: 0 auto;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+}
+
+.all-apps-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.all-apps-header h1 {
+    font-size: 2.5rem;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    width: 90%; */
+}
+
+.laptop-list-item {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.laptop-list-item ul {
+    padding-left: 0;
+}
+
+.laptop-list-item li {
+    font-size: 1.2rem;
+    margin: 10px 0;
+}
+
+.laptop-list-item a {
+    color: #333;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    display: block;
+}
+
+.laptop-list-item a:hover {
+    background-color: #d9385b;
+    color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .index-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .text-container {
+        max-width: 100%;
+    }
+
+    .main-header {
+        font-size: 3em;
+    }
+
+    .subheader {
+        font-size: 1.2em;
+    }
+
+    .card-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .form-card {
+        padding: 20px;
+    }
+    
+    form {
+        gap: 15px;
+    }
+
+    button[type="submit"], .cancel-btn {
+        width: 100%;
+    }
+
+    .all-apps-body {
+        width: 95%;
+        padding: 20px;
+    }
+
+    .all-apps-header h1 {
+        font-size: 2rem;
+    }
+
+    .laptop-list-item li {
+        font-size: 1rem;
+    }
 }

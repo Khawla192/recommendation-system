@@ -21,7 +21,7 @@
       </div>
     </div>
     <div class="container">
-      <h1>Laptop Recommendations</h1>
+      <h1 class="container-h1">List of Recommeded Laptops</h1>
       <% if (users.length === 0) { %>
         <p>No users have laptops yet.</p>
         <% } else { %>
@@ -29,7 +29,7 @@
             <% users.forEach(user => { %>
               <% if (user.laptops.length > 0) { %>
                 <% user.laptops.forEach(laptop => { %>
-                  <div class="card">
+                  <div class="card-info">
                     <img src="<%= laptop.images[0] %>" alt="<%= laptop.name %>" width="200">
                     <h3>
                       <%= laptop.brand %> - <%= laptop.name %>

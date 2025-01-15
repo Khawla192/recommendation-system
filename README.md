@@ -82,6 +82,21 @@ When adding a laptop recommendation, the form includes the following fields:
 
 ----------
 
+### Attributions
+
+This section includes credits for the external resources and libraries used to develop this application:
+
+1. **MongoDB**: NoSQL database used to store the laptop and user data in this application.  
+   [Link to MongoDB](https://www.mongodb.com/)
+
+2. **Node.js**: A JavaScript runtime built on Chrome's V8 JavaScript engine, used to run the server-side code.  
+   [Link to Node.js](https://nodejs.org/)
+
+3. **EJS**: A templating engine used for rendering dynamic HTML pages.  
+   [Link to EJS](https://ejs.co/)
+
+----------
+
 ## Technologies Used
 
 ![HTML](https://img.shields.io/badge/-HTML-E34F26?logo=html5&logoColor=white&style=flat-square)  

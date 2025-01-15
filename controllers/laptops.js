@@ -76,6 +76,7 @@ router.get('/laptops/:details', async (req, res) => {
         // const laptop = user.laptops.id(laptopId); 
         res.render('laptops/details.ejs', {
             laptop,
+            currentUser,
         });
     } catch (error) {
         console.log(error);

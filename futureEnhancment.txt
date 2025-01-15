@@ -1,0 +1,208 @@
+users/show.ejs 
+After the image
+<div class="view-details">
+    <a href="/user/<%= user._id %>/laptops/<%= laptop._id %>" class="view-details-link">View Details</a>
+</div>
+
+laptops/index 
+The orignal code
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <title>Laptops</title>
+</head>
+
+<body>
+    <%- include('../partials/_navbar.ejs') %>
+        <div class="container">
+            <div class="header-container">
+                <h1 class="container-h1">Laptop Recommendations</h1>
+                <a class="add-app-link" href="/users/<%= user._id %>/laptops/new">Add New Laptop</a><br>
+            </div>
+            <% if (users.length===0) { %>
+                <p>No users have laptops yet.</p>
+                <% } else { %>
+                    <div class="card-container">
+                        <% users.forEach(user=> { %>
+                            <% if (user.laptops.length> 0) { %>
+                                <% user.laptops.forEach(laptop => { %>
+                                    <div class="card-info">
+                                        <img src="<%= laptop.images[0] %>" alt="<%= laptop.name %>" width="200">
+                                        <h3>
+                                            <%= laptop.brand %> - <%= laptop.name %>
+                                        </h3>
+                                        <a href="/users/<%= user._id %>/laptops/<%= laptop._id %>">View Details</a>
+                                    </div>
+                                    <% }); %>
+                                        <% } else { %>
+                                            <p></p>
+                                            <% } %>
+                                                <% }); %>
+                    </div>
+                    <% } %>
+        </div>
+</body>
+
+</html>
+
+index.ejs 
+The orignal code
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+  <title>Recommindation System</title>
+</head>
+
+<body class="index-body">
+  <%- include('./partials/_navbar.ejs') %>
+    <div class="index-container">
+      <div class="text-container">
+        <h1 class="main-header">Recommindation System</h1>
+        <p class="subheader">A Recommindation System for Laptops.</p>
+      </div>
+      <div class="auth-links">
+        <a class="signup-link" href="/auth/sign-up">Sign Up</a>
+        <a class="signin-link" href="/auth/sign-in">Sign In</a>
+      </div>
+    </div>
+    <div class="container">
+      <h1 class="container-h1">List of Recommeded Laptops</h1>
+      <% if (users.length === 0) { %>
+        <p>No users have laptops yet.</p>
+        <% } else { %>
+          <div class="card-container">
+            <% users.forEach(user => { %>
+              <% if (user.laptops.length > 0) { %>
+                <% user.laptops.forEach(laptop => { %>
+                  <div class="card-info">
+                    <img src="<%= laptop.images[0] %>" alt="<%= laptop.name %>" width="200">
+                    <h3>
+                      <%= laptop.brand %> - <%= laptop.name %>
+                    </h3>
+                    <a href="/showAll/<%= laptop._id %>">View Details</a>
+                  </div>
+                  <% }); %>
+                    <% } else { %>
+                      <p></p>
+                      <% } %>
+                        <% }); %>
+          </div>
+        <% } %>
+    </div>
+</body>
+
+</html>
+
+index.ejs 
+After Edting 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+  <title>Recommindation System</title>
+</head>
+
+<body class="index-body">
+  <%- include('./partials/_navbar.ejs') %>
+    <div class="index-container">
+      <div class="text-container">
+        <h1 class="main-header">Recommindation System</h1>
+        <p class="subheader">A Recommindation System for Laptops.</p>
+      </div>
+      <div class="auth-links">
+        <a class="signup-link" href="/auth/sign-up">Sign Up</a>
+        <a class="signin-link" href="/auth/sign-in">Sign In</a>
+      </div>
+    </div>
+    <div class="container">
+      <h1 class="container-h1">List of Recommeded Laptops</h1>
+      <% if (users.length===0) { %>
+        <p>No users have laptops yet.</p>
+        <% } else { %>
+            <div class="card-container-main">
+                <% users.forEach(user=> { %>
+                    <% if (user.laptops.length> 0) { %>
+                        <% user.laptops.forEach(laptop=> { %>
+                            <div class="card-info">
+                            <div class="info">
+                                <img src="<%= laptop.images[0] %>" alt="<%= laptop.name %>" width="200">
+                                <h3>
+                                    <%= laptop.brand %> - <%= laptop.name %>
+                                </h3>
+                            </div>
+                            <div class="details">
+                                <p><strong>Category:</strong>
+                                    <%= laptop.category %>
+                                </p>
+                                <p><strong>Display:</strong>
+                                    <%= laptop.screenSize %>, <%= laptop.resolution %>
+                                            <% if (laptop.touchscreen) { %>
+                                                , Touchscreen
+                                                <% } %>
+                                </p>
+                                <p><strong>Processor:</strong>
+                                    <%= laptop.processor %>
+                                </p>
+                                <p><strong>RAM:</strong>
+                                    <%= laptop.ram %>
+                                </p>
+                                <% if (laptop.storage) { %>
+                                    <p><strong>Storage:</strong>
+                                        <%= laptop.storage %>
+                                            <% if (laptop.storageSize) { %>
+                                                (<%= laptop.storageSize %> GB)
+                                                    <% } %>
+                                    </p>
+                                    <% } %>
+                                        <% if (laptop.graphics) { %>
+                                            <p><strong>Graphics:</strong>
+                                                <%= laptop.graphics %>
+                                            </p>
+                                            <% } %>
+                                                <% if (laptop.os) { %>
+                                                    <p><strong>OS:</strong>
+                                                        <%= laptop.os %>
+                                                    </p>
+                                                    <% } %>
+                                                        <% if (laptop.weight) { %>
+                                                            <p><strong>Weight:</strong>
+                                                                <%= laptop.weight %> kg
+                                                            </p>
+                                                            <% } %>
+                            </div>
+                            </div>
+            <% }); %>
+                <% } else { %>
+                    <p></p>
+                    <% } %>
+                        <% }); %>
+</div>
+<% } %>
+    </div>
+</body>
+
+</html>
+
+style for index 
+.card-container-main {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+
+

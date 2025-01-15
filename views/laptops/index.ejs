@@ -21,13 +21,54 @@
                     <div class="card-container">
                         <% users.forEach(user=> { %>
                             <% if (user.laptops.length> 0) { %>
-                                <% user.laptops.forEach(laptop => { %>
+                                <% user.laptops.forEach(laptop=> { %>
                                     <div class="card-info">
-                                        <img src="<%= laptop.images[0] %>" alt="<%= laptop.name %>" width="200">
-                                        <h3>
-                                            <%= laptop.brand %> - <%= laptop.name %>
-                                        </h3>
-                                        <a href="/laptops/<%= laptop._id %>">View Details</a>
+                                        <div class="info">
+                                            <img src="<%= laptop.images[0] %>" alt="<%= laptop.name %>" width="200">
+                                            <h3>
+                                                <%= laptop.brand %> - <%= laptop.name %>
+                                            </h3>
+                                        </div>
+                                        <div class="details">
+                                            <p><strong>Category:</strong>
+                                                <%= laptop.category %>
+                                            </p>
+                                            <p><strong>Display:</strong>
+                                                <%= laptop.screenSize %>, <%= laptop.resolution %>
+                                                        <% if (laptop.touchscreen) { %>
+                                                            , Touchscreen
+                                                            <% } %>
+                                            </p>
+                                            <p><strong>Processor:</strong>
+                                                <%= laptop.processor %>
+                                            </p>
+                                            <p><strong>RAM:</strong>
+                                                <%= laptop.ram %>
+                                            </p>
+                                            <% if (laptop.storage) { %>
+                                                <p><strong>Storage:</strong>
+                                                    <%= laptop.storage %>
+                                                        <% if (laptop.storageSize) { %>
+                                                            (<%= laptop.storageSize %> GB)
+                                                                <% } %>
+                                                </p>
+                                                <% } %>
+                                                    <% if (laptop.graphics) { %>
+                                                        <p><strong>Graphics:</strong>
+                                                            <%= laptop.graphics %>
+                                                        </p>
+                                                        <% } %>
+                                                            <% if (laptop.os) { %>
+                                                                <p><strong>OS:</strong>
+                                                                    <%= laptop.os %>
+                                                                </p>
+                                                                <% } %>
+                                                                    <% if (laptop.weight) { %>
+                                                                        <p><strong>Weight:</strong>
+                                                                            <%= laptop.weight %> kg
+                                                                        </p>
+                                                                        <% } %>
+                                        </div>
                                     </div>
                                     <% }); %>
                                         <% } else { %>

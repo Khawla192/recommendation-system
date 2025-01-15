@@ -61,6 +61,8 @@ app.get('/showAll/:showId', async (req, res) => {
     } else {
       const allUsers = await User.find().populate('laptops');
       const laptop = allUsers.laptops || [];
+      // const laptop = User.laptops.find(laptop => laptop._id.toString() === req.params.showId); 
+      console.log(laptop); // For debugging purposes
       res.render('showAll.ejs', {
         laptop,
         user: allUsers,

@@ -48,29 +48,38 @@ app.get('/', async (req, res) => {
     }
   } catch (error) {
     console.error(error);
-    // res.status(500).send("An error occurred.", error);
     res.redirect('/');
   }
 });
 
 app.get('/showAll/:showId', async (req, res) => {
   try {
-    res.redirect('/auth/sign-in');
     if (req.session.user) {
       res.redirect(`/users/${req.session.user._id}/laptops`);
     } else {
       const allUsers = await User.find().populate('laptops');
-      const laptop = allUsers.laptops || [];
-      // const laptop = User.laptops.find(laptop => laptop._id.toString() === req.params.showId); 
-      console.log(laptop); // For debugging purposes
+      let laptops = [];
+      let foundLaptop;
+      
+      allUsers.forEach(user => {
+        if (user.laptops) {
+          laptops = [...laptops, ...user.laptops];
+        }
+      });
+
+      laptops.forEach(laptop => { 
+        if (laptop.id === req.params.showId) {
+          foundLaptop = laptop;
+        }
+      });
+
       res.render('showAll.ejs', {
-        laptop,
+        laptop: foundLaptop,
         user: allUsers,
       });
     }
   } catch (error) {
     console.error(error);
-    // res.status(500).send("An error occurred.", error);
     res.redirect('/');
   }
 });
